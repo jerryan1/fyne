@@ -983,6 +983,40 @@ func (d *gLDriver) CreateWindow(title string) fyne.Window {
 	return wrapInnerWindow(inner, root, d)
 }
 
+func (d *gLDriver) CreateWindowWithoutTitleBar(title string) fyne.Window {
+	if runtime.GOOS != "js" {
+		return d.createWindow(title, false)
+	}
+
+	// handling multiple windows by overlaying on the root for web
+	var root fyne.Window
+	d.windowLock.RLock()
+	hasVisible := false
+	for _, w := range d.windows {
+		if w.(*window).visible {
+			hasVisible = true
+			root = w
+			break
+		}
+	}
+	d.windowLock.RUnlock()
+
+	if !hasVisible {
+		return d.createWindow(title, false)
+	}
+
+	c := root.Canvas().(*glCanvas)
+	multi := c.webExtraWindows
+	if multi == nil {
+		multi = container.NewMultipleWindows()
+		multi.Resize(c.Size())
+		c.webExtraWindows = multi
+	}
+	inner := container.NewInnerWindow(title, canvas.NewRectangle(color.Transparent))
+	multi.Add(inner)
+
+	return wrapInnerWindow(inner, root, d)
+}
 func (d *gLDriver) createWindow(title string, decorate bool) fyne.Window {
 	var ret *window
 	if title == "" {
