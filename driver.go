@@ -7,6 +7,10 @@ import "time"
 type Driver interface {
 	// CreateWindow creates a new UI Window.
 	CreateWindow(string) Window
+
+	// CreateWindowWithoutTitleBar creates a new UI Window and WithoutTitleBar 2024-11-11 11:31:09 zhibin.
+	CreateWindowWithoutTitleBar(string) Window
+
 	// AllWindows returns a slice containing all app windows.
 	AllWindows() []Window
 
