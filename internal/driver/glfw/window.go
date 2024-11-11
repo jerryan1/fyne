@@ -157,6 +157,7 @@ func (w *window) doShow() {
 		if !build.IsWayland && w.centered {
 			w.doCenterOnScreen() // lastly center if that was requested
 		}
+		w.doPosition()
 		view.Show()
 
 		// save coordinates
@@ -983,6 +984,7 @@ func (d *gLDriver) CreateWindow(title string) fyne.Window {
 	return wrapInnerWindow(inner, root, d)
 }
 
+// CreateWindowWithoutTitleBar
 func (d *gLDriver) CreateWindowWithoutTitleBar(title string) fyne.Window {
 	if runtime.GOOS != "js" {
 		return d.createWindow(title, false)

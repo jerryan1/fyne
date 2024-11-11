@@ -35,6 +35,12 @@ type Window interface {
 	// the Window object is currently positioned on.
 	CenterOnScreen()
 
+	//Set x y
+	SetPosition(x, y int)
+
+	//Get x y
+	GetPosition() (x, y int)
+
 	// Padded, normally true, states whether the window should have inner
 	// padding so that components do not touch the window edge.
 	Padded() bool
