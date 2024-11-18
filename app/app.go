@@ -168,4 +168,5 @@ func newAppWithDriver(d fyne.Driver, id string) fyne.App {
 type systrayDriver interface {
 	SetSystemTrayMenu(*fyne.Menu)
 	SetSystemTrayIcon(resource fyne.Resource)
+	SetSystemTooltip(tooltip string)
 }

@@ -113,6 +113,11 @@ func (a *fyneApp) SetSystemTrayIcon(icon fyne.Resource) {
 		desk.SetSystemTrayIcon(icon)
 	}
 }
+func (a *fyneApp) SetSystemTooltip(tooltip string) {
+	if desk, ok := a.Driver().(systrayDriver); ok { // don't use this on mobile tag
+		desk.SetSystemTooltip(tooltip)
+	}
+}
 
 func rootConfigDir() string {
 	desktopConfig, _ := os.UserConfigDir()

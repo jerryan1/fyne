@@ -41,6 +41,11 @@ func (a *fyneApp) SetSystemTrayMenu(menu *fyne.Menu) {
 	}
 }
 
+func (a *fyneApp) SetSystemTooltip(tooltip string) {
+	if desk, ok := a.Driver().(systrayDriver); ok { // don't use this on mobile tag
+		desk.SetSystemTooltip(tooltip)
+	}
+}
 func rootConfigDir() string {
 	homeDir, _ := os.UserHomeDir()
 

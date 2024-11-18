@@ -69,6 +69,11 @@ func (a *fyneApp) SetSystemTrayIcon(icon fyne.Resource) {
 	a.Driver().(systrayDriver).SetSystemTrayIcon(icon)
 }
 
+// SetSystemTooltip tooltip
+func (a *fyneApp) SetSystemTooltip(tooltip string) {
+	a.Driver().(systrayDriver).SetSystemTooltip(tooltip)
+}
+
 func escapeNotificationString(in string) string {
 	noSlash := strings.ReplaceAll(in, "`", "``")
 	return strings.ReplaceAll(noSlash, "\"", "`\"")

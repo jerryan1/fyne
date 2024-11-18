@@ -10,4 +10,6 @@ type App interface {
 	// SetSystemTrayIcon sets the icon to be used in system tray.
 	// If you pass a `ThemedResource` then any OS that adjusts look to match theme will adapt the icon.
 	SetSystemTrayIcon(icon fyne.Resource)
+	// SetSystemTooltip only available on Mac and Windows.
+	SetSystemTooltip(tooltip string)
 }

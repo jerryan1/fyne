@@ -187,7 +187,9 @@ func (d *gLDriver) SetSystemTrayIcon(resource fyne.Resource) {
 func (d *gLDriver) SystemTrayMenu() *fyne.Menu {
 	return d.systrayMenu
 }
-
+func (d *gLDriver) SetSystemTooltip(tooltip string) {
+	systray.SetTooltip(tooltip)
+}
 func (d *gLDriver) CurrentKeyModifiers() fyne.KeyModifier {
 	return d.currentKeyModifiers
 }
