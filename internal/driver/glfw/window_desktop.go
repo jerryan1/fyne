@@ -155,6 +155,14 @@ func (w *window) SetPosition(x, y int) {
 }
 
 func (w *window) doPosition() {
+	f := w.Canvas().Scale()
+	if f != 1 {
+		x := float32(w.width) - float32(w.width)/f
+		y := float32(w.height) - float32(w.height)/f
+		w.viewport.SetPos(w.xpos-int(x), w.ypos-int(y))
+	} else {
+		w.viewport.SetPos(w.xpos, w.ypos)
+	}
 	w.viewport.SetPos(w.xpos, w.ypos)
 }
 
