@@ -163,7 +163,6 @@ func (w *window) doPosition() {
 	} else {
 		w.viewport.SetPos(w.xpos, w.ypos)
 	}
-	w.viewport.SetPos(w.xpos, w.ypos)
 }
 
 func (w *window) GetPosition() (x, y int) {
